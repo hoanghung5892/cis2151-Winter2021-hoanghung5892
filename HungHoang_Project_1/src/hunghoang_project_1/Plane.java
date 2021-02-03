@@ -14,14 +14,20 @@ public class Plane {
         this.currentAltitudeInFeet = currentAltitudeInFeet;
         this.landingGearEnable = landingGearEnable;
     }
+    public Plane(String model, double maxAltitudeInFeet)
+    {
+        this.model = model;
+        this.maxAltitudeInFeet = maxAltitudeInFeet;
+        landingGearEnable = false;
+        currentAltitudeInFeet = 3000;
+    }
     public void changeAltitude(double changeAltitudeInFeet)
     {        
         
             currentAltitudeInFeet += changeAltitudeInFeet;
             if(currentAltitudeInFeet > maxAltitudeInFeet)
-            {
-                landingGearEnable = false;
-                System.out.println("Your change of altitude: "+currentAltitudeInFeet+" which can not be higher than the maximum altitude of the plane: "+maxAltitudeInFeet);
+            {              
+                System.out.println("Your current of altitude: "+currentAltitudeInFeet+" which can not be higher than the maximum altitude of the plane: "+maxAltitudeInFeet);
             }
             if(currentAltitudeInFeet < maxAltitudeInFeet && currentAltitudeInFeet >= 1000)
             {
@@ -56,9 +62,8 @@ public class Plane {
             
         }else return landingGearEnable = false;
     }
-    public boolean getlandingGearEnable(boolean landingGearEnable){
-        this.landingGearEnable = landingGearEnable;
-                return true;
+    public boolean getlandingGearEnable(){
+                return landingGearEnable;
     }
     public double getMaxAltitudeInFeet() {
         return maxAltitudeInFeet;
@@ -70,6 +75,22 @@ public class Plane {
 
     public double getCurrentAltitudeInFeet() {
         return currentAltitudeInFeet;
+    }
+
+    public void setMaxAltitudeInFeet(double maxAltitudeInFeet) {
+        this.maxAltitudeInFeet = maxAltitudeInFeet;
+    }
+
+    public void setLandingGearEnable(boolean landingGearEnable) {
+        this.landingGearEnable = landingGearEnable;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setCurrentAltitudeInFeet(double currentAltitudeInFeet) {
+        this.currentAltitudeInFeet = currentAltitudeInFeet;
     }
     
 }
