@@ -2,8 +2,8 @@
 package project_2;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.Collections;
+
 
 public class Project_2 {
     
@@ -25,8 +25,11 @@ public class Project_2 {
             }
             
         }
-        System.out.println("Computer Cards are :"+computerCards);
-        System.out.println("User Cards are :"+UserCards);
+        System.out.println(deck);
+//        System.out.println("Computer Cards are :"+computerCards);
+//        System.out.println("User Cards are :"+UserCards);
+
+        
 
          
          

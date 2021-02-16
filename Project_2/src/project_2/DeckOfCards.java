@@ -6,30 +6,28 @@ import java.util.List;
 import java.util.Random;
 
 public class DeckOfCards {
-enum Suit { Spades, Clubs, Hearts, Diamonds}
-enum Face { Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace } 
-List Deck;
 
+    ArrayList<Card>  deck;
     public DeckOfCards()
     {
-        List<String> Deck = new ArrayList<>();
-        for(Face face: Face.values())
+      deck = new ArrayList<Card>(52);
+        for(Card.Face face: Card.Face.values())
         {
-            for (Suit suit: Suit.values())
+            for (Card.Suit suit: Card.Suit.values())
             {
-                 Deck.add(face.name()+" of "+suit.name());
+               deck.add(new Card(face,suit));
             }
         }
-        this.Deck = Deck;
     }
+    
 
     public Object getRandomCard()
     {
-        DeckOfCards deck = new DeckOfCards();
-        Random random = new Random();
-        int randomIndex = random.nextInt(deck.Deck.size());
-        Object randomElement = deck.Deck.get(randomIndex);
-        deck.Deck.remove(randomElement);
+        Random random = new Random();     
+        int randomIndex = random.nextInt(deck.size());
+        String randomElement = deck.get(randomIndex).toString();
+        deck.remove(randomElement);
         return randomElement;
+        
     }
 }

@@ -9,24 +9,24 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Card implements Comparable<Card>{
 
 
-    enum Suit { Spades, Clubs, Hearts, Diamonds}
-    enum Face { Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace }
-    enum Rank { HighCard, OnePair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush}
+
+
+
+    enum Suit { SPACES, CLUBS, HEARTS, DIAMONDS}
+    enum Face { TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE }
     public Suit suit;
     public Face face;
-    private Rank rank;
-    public ArrayList Card;
     
     public Card(Face face, Suit suit)
     {
         this.suit = suit;
         this.face = face;
     }
-
-    public String getRandomCard(int a){
-        List<String> Card_1 = new ArrayList<>();
-        String randomElement = Card_1.get(a);
-        return randomElement;
+    Card(Card card)
+    {   
+        //Copy constructor
+        suit = card.suit;
+        face = card.face;
     }
 
     public Suit getSuit() {
