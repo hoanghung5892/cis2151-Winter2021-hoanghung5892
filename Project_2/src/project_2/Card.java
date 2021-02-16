@@ -8,49 +8,21 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Card implements Comparable<Card>{
 
+
     enum Suit { Spades, Clubs, Hearts, Diamonds}
     enum Face { Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace }
     enum Rank { HighCard, OnePair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush}
-    private Suit suit;
-    private Face face;
+    public Suit suit;
+    public Face face;
     private Rank rank;
     public ArrayList Card;
     
-    public Card()
+    public Card(Face face, Suit suit)
     {
         this.suit = suit;
         this.face = face;
     }
-    public void printCard()
-    {
-        List<String> Card = new ArrayList<>();
-        for(Face face: Face.values())
-        {
-            for (Suit suit: Suit.values())
-            {
-                Card.add(face.name()+" of "+suit.name());
-                //System.out.println(face.name()+" of "+suit.name());
-                System.out.println(Card);
-            }
-        }
-    }
-    public void DeckofCard(){
-        List<String> Card = new ArrayList<>();
-        for(Face face: Face.values())
-        {
-            for (Suit suit: Suit.values())
-            {
-                Card.add(face.name()+" of "+suit.name());
-            }
-        }
-        
-    }
-    public int getSize(){
-        int a;
-        Card card = new Card();
-        a = card.Card.size();
-        return a;
-    }
+
     public String getRandomCard(int a){
         List<String> Card_1 = new ArrayList<>();
         String randomElement = Card_1.get(a);
