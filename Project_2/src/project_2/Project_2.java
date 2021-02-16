@@ -2,6 +2,7 @@
 package project_2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 
@@ -25,9 +26,9 @@ public class Project_2 {
             }
             
         }
-        System.out.println(deck);
-//        System.out.println("Computer Cards are :"+computerCards);
-//        System.out.println("User Cards are :"+UserCards);
+
+        System.out.println("Computer Cards are :"+computerCards);
+        System.out.println("User Cards are :"+UserCards);
 
         
 
