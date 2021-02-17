@@ -8,10 +8,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Card implements Comparable<Card>{
 
-
-
-
-
     enum Suit { SPACES, CLUBS, HEARTS, DIAMONDS}
     enum Face { TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE }
     public Suit suit;
@@ -37,11 +33,16 @@ public class Card implements Comparable<Card>{
         return face;
     }
 
+public String toString()
+    {
+	return face+" of "+suit;	
+    }
+	
     @Override
     public int compareTo(Card other) {
         return face.ordinal() - other.face.ordinal();
         
     }
-    }
+}
 
     

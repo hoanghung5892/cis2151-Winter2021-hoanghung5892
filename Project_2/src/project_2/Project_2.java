@@ -11,7 +11,6 @@ public class Project_2 {
     public static void main(String[] args) {       
 
         DeckOfCards deck = new DeckOfCards();
-        //System.out.println(deck.getRandomCard());
 
         ArrayList computerCards = new ArrayList();
         ArrayList UserCards = new ArrayList();
@@ -28,8 +27,9 @@ public class Project_2 {
             
         }
 
-        System.out.println("Computer Cards are :"+computerCards.toString());
-        System.out.println("User Cards are :"+UserCards.toString());
+        PokerHand user = new PokerHand(UserCards);
+        PokerHand comp = new PokerHand(computerCards);
+        System.out.println(user.toString());
 
         
 

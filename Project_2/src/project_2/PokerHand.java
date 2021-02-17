@@ -8,23 +8,19 @@ import java.util.Collections;
 import java.util.Random;
 
 public class PokerHand {
-    private ArrayList<Card> cards;
+    private ArrayList<Card> hand;
 
     public PokerHand(ArrayList<Card> cards) {
+        hand = new ArrayList<Card>(5);
         for (Card card : cards) {
-            this.cards.add(new Card(card));
+            this.hand.add(card);
         }
-        Collections.sort(this.cards);
-        System.out.println(cards);
-    }
-
-        public Object getRandomCard()
-    {
-        Random random = new Random();     
-        int randomIndex = random.nextInt(cards.size());
-        Object randomElement = cards.get(randomIndex);
-        cards.remove(randomElement);
-        return randomElement;
+        Collections.sort(this.hand);
+        for(Card card : hand)
+        {
+            card.toString();
+        }
+        System.out.println(hand);
     }
 
     enum Rank {
@@ -48,77 +44,151 @@ public class PokerHand {
         {
             if(getHandRank() == Rank.STRAIGHT_FLUSH)
             {
-                if(cards.get(4).getFace().ordinal() == otherHand.cards.get(4).getFace().ordinal())
+                if(hand.get(4).getFace().ordinal() == otherHand.hand.get(4).getFace().ordinal())
                 {
                     return Result.DRAW;
                 }
-                if(cards.get(4).getFace().ordinal() < otherHand.cards.get(4).getFace().ordinal())
+                if(hand.get(4).getFace().ordinal() < otherHand.hand.get(4).getFace().ordinal())
                 {
                     return Result.LOSE;
                 }
-                if(cards.get(4).getFace().ordinal() > otherHand.cards.get(4).getFace().ordinal())
+                if(hand.get(4).getFace().ordinal() > otherHand.hand.get(4).getFace().ordinal())
                 {
                     return Result.WIN;
                 }                             
             }
             if(getHandRank()== Rank.STRAIGHT)
             {
-                if(cards.get(4).getFace().ordinal() == otherHand.cards.get(4).getFace().ordinal())
+                if(hand.get(4).getFace().ordinal() == otherHand.hand.get(4).getFace().ordinal())
                 {
                     return Result.DRAW;
                 }
-                if(cards.get(4).getFace().ordinal() < otherHand.cards.get(4).getFace().ordinal())
+                if(hand.get(4).getFace().ordinal() < otherHand.hand.get(4).getFace().ordinal())
                 {
                     return Result.LOSE;
                 }
-                if(cards.get(4).getFace().ordinal() > otherHand.cards.get(4).getFace().ordinal())
+                if(hand.get(4).getFace().ordinal() > otherHand.hand.get(4).getFace().ordinal())
                 {
                     return Result.WIN;
                 }    
             }
             if(getHandRank()== Rank.HIGH_CARD)
             {
-                if(cards.get(4).getFace().ordinal() == otherHand.cards.get(4).getFace().ordinal() )
+                if(hand.get(4).getFace().ordinal() == otherHand.hand.get(4).getFace().ordinal() )
                 {
-                    if(cards.get(3).getFace().ordinal() == otherHand.cards.get(3).getFace().ordinal() )
+                    if(hand.get(3).getFace().ordinal() == otherHand.hand.get(3).getFace().ordinal() )
                     {
-                        if(cards.get(2).getFace().ordinal() == otherHand.cards.get(2).getFace().ordinal())
+                        if(hand.get(2).getFace().ordinal() == otherHand.hand.get(2).getFace().ordinal())
                         {
-                            if(cards.get(1).getFace().ordinal() == otherHand.cards.get(1).getFace().ordinal())
+                            if(hand.get(1).getFace().ordinal() == otherHand.hand.get(1).getFace().ordinal())
                             {
-                                if(cards.get(0).getFace().ordinal() == otherHand.cards.get(0).getFace().ordinal())
+                                if(hand.get(0).getFace().ordinal() == otherHand.hand.get(0).getFace().ordinal())
                                 {
                                     return Result.DRAW;
                                 }
-                                if(cards.get(0).getFace().ordinal() > otherHand.cards.get(0).getFace().ordinal())
+                                if(hand.get(0).getFace().ordinal() > otherHand.hand.get(0).getFace().ordinal())
                                 {
                                     return Result.WIN;
                                 }
                                 else return Result.LOSE;
                             }
-                            if(cards.get(1).getFace().ordinal() > otherHand.cards.get(1).getFace().ordinal())
+                            if(hand.get(1).getFace().ordinal() > otherHand.hand.get(1).getFace().ordinal())
                             {
                                 return Result.WIN;
                             }
                             else return Result.LOSE;
                         }
-                        if(cards.get(2).getFace().ordinal() > otherHand.cards.get(2).getFace().ordinal())
+                        if(hand.get(2).getFace().ordinal() > otherHand.hand.get(2).getFace().ordinal())
                         {
                             return Result.WIN;
                         }
                         else return Result.LOSE;
                     }
-                    if(cards.get(3).getFace().ordinal() > cards.get(3).getFace().ordinal() )
+                    if(hand.get(3).getFace().ordinal() > hand.get(3).getFace().ordinal() )
                     {
                         return Result.WIN;
                     }
                     else return Result.LOSE;
                 }
-                if((cards.get(4).getFace().ordinal()) > otherHand.cards.get(4).getFace().ordinal() )
+                if((hand.get(4).getFace().ordinal()) > otherHand.hand.get(4).getFace().ordinal() )
                 {
                     return Result.WIN;
                 }
                 else return Result.LOSE;
+            }
+            if(getHandRank()== Rank.TWO_PAIR)
+            {
+                if(hand.get(4).getFace().ordinal()==hand.get(3).getFace().ordinal() && otherHand.hand.get(4).getFace().ordinal()== otherHand.hand.get(3).getFace().ordinal()
+                    && hand.get(4).getFace().ordinal() == otherHand.hand.get(4).getFace().ordinal())
+                {
+                    if(hand.get(2).getFace().ordinal()==hand.get(1).getFace().ordinal() && otherHand.hand.get(2).getFace().ordinal()== otherHand.hand.get(1).getFace().ordinal()
+                    && hand.get(2).getFace().ordinal() == otherHand.hand.get(2).getFace().ordinal())
+                    {
+                       if(hand.get(0).getFace().ordinal() == otherHand.hand.get(0).getFace().ordinal())
+                       {
+                           return Result.DRAW;
+                       }
+                        if(hand.get(0).getFace().ordinal() > otherHand.hand.get(0).getFace().ordinal())
+                       {
+                           return Result.WIN;
+                       }
+                        else return Result.LOSE;
+                    }
+                    if(hand.get(2).getFace().ordinal()==hand.get(1).getFace().ordinal() && otherHand.hand.get(2).getFace().ordinal()== otherHand.hand.get(1).getFace().ordinal()
+                        && hand.get(2).getFace().ordinal() < otherHand.hand.get(2).getFace().ordinal())
+                    {
+                        return Result.LOSE;
+                    }
+                }
+                if(hand.get(4).getFace().ordinal()==hand.get(3).getFace().ordinal() && otherHand.hand.get(4).getFace().ordinal()== otherHand.hand.get(3).getFace().ordinal()
+                    && hand.get(4).getFace().ordinal() > otherHand.hand.get(4).getFace().ordinal())
+                {
+                    return Result.WIN;
+                }
+                if(hand.get(4).getFace().ordinal()==hand.get(3).getFace().ordinal() && otherHand.hand.get(4).getFace().ordinal()== otherHand.hand.get(3).getFace().ordinal()
+                    && hand.get(4).getFace().ordinal() < otherHand.hand.get(4).getFace().ordinal())
+                {
+                    return Result.LOSE;
+                }
+            }
+            if(getHandRank()== Rank.PAIR)
+            {
+                if(hand.get(4).getFace().ordinal()== hand.get(3).getFace().ordinal() && otherHand.hand.get(4).getFace().ordinal()== otherHand.hand.get(3).getFace().ordinal()
+                     && hand.get(4).getFace().ordinal() == otherHand.hand.get(4).getFace().ordinal()   )
+                {
+                     if(hand.get(2).getFace().ordinal() == otherHand.hand.get(2).getFace().ordinal()   )
+                     {
+                         if(hand.get(1).getFace().ordinal()== otherHand.hand.get(1).getFace().ordinal())
+                         {
+                             if(hand.get(0).getFace().ordinal()== otherHand.hand.get(0).getFace().ordinal())
+                             {
+                                 return Result.DRAW;
+                             }
+                             if(hand.get(0).getFace().ordinal()== otherHand.hand.get(0).getFace().ordinal())
+                             {
+                                 return Result.WIN;
+                             }else return Result.LOSE;
+                         }
+                         if(hand.get(1).getFace().ordinal() > otherHand.hand.get(1).getFace().ordinal())
+                         {
+                             return Result.WIN;
+                         }else return Result.LOSE;
+                     }
+                     if(hand.get(2).getFace().ordinal() > otherHand.hand.get(2).getFace().ordinal()   )
+                     {
+                         return Result.WIN;
+                     }else return Result.LOSE;
+                }
+                if(hand.get(4).getFace().ordinal()== hand.get(3).getFace().ordinal() && otherHand.hand.get(4).getFace().ordinal()== otherHand.hand.get(3).getFace().ordinal()
+                     && hand.get(4).getFace().ordinal() > otherHand.hand.get(4).getFace().ordinal()   )
+                {
+                    return Result.WIN;
+                }
+                if(hand.get(4).getFace().ordinal()== hand.get(3).getFace().ordinal() && otherHand.hand.get(4).getFace().ordinal()== otherHand.hand.get(3).getFace().ordinal()
+                     && hand.get(4).getFace().ordinal() < otherHand.hand.get(4).getFace().ordinal()   )
+                {
+                    return Result.LOSE;
+                }
             }
         }
 
@@ -162,8 +232,8 @@ public class PokerHand {
     private boolean isStraightFlush() {
        if(isStraight())
        {
-       if( cards.get(0).getSuit().ordinal() == cards.get(1).getSuit().ordinal() && cards.get(1).getSuit().ordinal() == cards.get(2).getSuit().ordinal()
-               && cards.get(2).getSuit().ordinal() == cards.get(3).getSuit().ordinal() &&cards.get(3).getSuit().ordinal() == cards.get(4).getSuit().ordinal())
+       if( hand.get(0).getSuit().ordinal() == hand.get(1).getSuit().ordinal() && hand.get(1).getSuit().ordinal() == hand.get(2).getSuit().ordinal()
+               && hand.get(2).getSuit().ordinal() == hand.get(3).getSuit().ordinal() &&hand.get(3).getSuit().ordinal() == hand.get(4).getSuit().ordinal())
             {
 //           if(cards.get(0).getFace().ordinal()+1== (cards.get(1).getFace().ordinal()) &&cards.get(1).getFace().ordinal()+1== cards.get(2).getFace().ordinal()
 //                   &&cards.get(2).getFace().ordinal()+1== cards.get(3).getFace().ordinal()&&cards.get(3).getFace().ordinal()+1== cards.get(4).getFace().ordinal())
@@ -180,11 +250,11 @@ public class PokerHand {
     private boolean isFourOfAKind() {
       
         int cp1,cp2,cp3,cp4,cp5;
-        cp1 = cards.get(0).getFace().ordinal();
-        cp2 = cards.get(1).getFace().ordinal();
-        cp3 = cards.get(2).getFace().ordinal();
-        cp4 = cards.get(3).getFace().ordinal();
-        cp5 = cards.get(4).getFace().ordinal();
+        cp1 = hand.get(0).getFace().ordinal();
+        cp2 = hand.get(1).getFace().ordinal();
+        cp3 = hand.get(2).getFace().ordinal();
+        cp4 = hand.get(3).getFace().ordinal();
+        cp5 = hand.get(4).getFace().ordinal();
         if(cp1== cp2 && cp1 == cp3 && cp1 == cp4 || cp1 == cp2 && cp1 == cp3 && cp1 == cp5 ||cp2== cp1 && cp2 == cp3 && cp2 == cp4 || cp2 == cp1 && cp2 == cp3 && cp2 == cp5 ||
                 cp3 == cp1 && cp3 ==cp2 && cp3 == cp4 || cp3 == cp1 && cp3 ==cp2 && cp3 == cp5 || cp4 == cp1 && cp4 == cp2 & cp4 ==cp3 ||cp4 == cp1 && cp4 == cp2 & cp4 ==cp5)
         {
@@ -195,8 +265,8 @@ public class PokerHand {
     }
 
     private boolean isFullHouse() {
-         if (cards.get(0).getFace().ordinal() == cards.get(1).getFace().ordinal() && cards.get(0).getFace().ordinal() == cards.get(2).getFace().ordinal() && 
-                 cards.get(2).getFace().ordinal() != cards.get(3).getFace().ordinal()&&  cards.get(3).getFace().ordinal() == cards.get(4).getFace().ordinal() )      
+         if (hand.get(0).getFace().ordinal() == hand.get(1).getFace().ordinal() && hand.get(0).getFace().ordinal() == hand.get(2).getFace().ordinal() && 
+                 hand.get(2).getFace().ordinal() != hand.get(3).getFace().ordinal()&&  hand.get(3).getFace().ordinal() == hand.get(4).getFace().ordinal() )      
                  {
                      return true;
                  }
@@ -204,16 +274,16 @@ public class PokerHand {
     }
 
     private boolean isFlush() {
-        if( cards.get(0).getSuit().ordinal() == cards.get(1).getSuit().ordinal() && cards.get(1).getSuit().ordinal() == cards.get(2).getSuit().ordinal()
-          && cards.get(2).getSuit().ordinal() == cards.get(3).getSuit().ordinal() &&cards.get(3).getSuit().ordinal() == cards.get(4).getSuit().ordinal())
+        if( hand.get(0).getSuit().ordinal() == hand.get(1).getSuit().ordinal() && hand.get(1).getSuit().ordinal() == hand.get(2).getSuit().ordinal()
+          && hand.get(2).getSuit().ordinal() == hand.get(3).getSuit().ordinal() &&hand.get(3).getSuit().ordinal() == hand.get(4).getSuit().ordinal())
        {
            return true;
        }
         return false;
     }
     private boolean isStraight() {
-        if(cards.get(0).getFace().ordinal()+1== (cards.get(1).getFace().ordinal()) &&cards.get(1).getFace().ordinal()+1== cards.get(2).getFace().ordinal()
-                   &&cards.get(2).getFace().ordinal()+1== cards.get(3).getFace().ordinal()&&cards.get(3).getFace().ordinal()+1== cards.get(4).getFace().ordinal())
+        if(hand.get(0).getFace().ordinal()+1== (hand.get(1).getFace().ordinal()) &&hand.get(1).getFace().ordinal()+1== hand.get(2).getFace().ordinal()
+                   &&hand.get(2).getFace().ordinal()+1== hand.get(3).getFace().ordinal()&&hand.get(3).getFace().ordinal()+1== hand.get(4).getFace().ordinal())
            {
                return true;
     }
@@ -222,8 +292,8 @@ public class PokerHand {
 
     private boolean isThreeOfAKind() {
 
-         if (cards.get(0).getFace().ordinal() == cards.get(1).getFace().ordinal() && cards.get(0).getFace().ordinal() == cards.get(2).getFace().ordinal() && 
-                 cards.get(2).getFace().ordinal() != cards.get(3).getFace().ordinal()&&  cards.get(3).getFace().ordinal() != cards.get(4).getFace().ordinal() )      
+         if (hand.get(0).getFace().ordinal() == hand.get(1).getFace().ordinal() && hand.get(0).getFace().ordinal() == hand.get(2).getFace().ordinal() && 
+                 hand.get(2).getFace().ordinal() != hand.get(3).getFace().ordinal()&&  hand.get(3).getFace().ordinal() != hand.get(4).getFace().ordinal() )      
                  {
                      return true;
                  }
@@ -231,7 +301,7 @@ public class PokerHand {
         return false;
     }
     private boolean isTwoPair() {
-        if(cards.get(0).getFace().ordinal() == cards.get(1).getFace().ordinal() && cards.get(2).getFace().ordinal() ==cards.get(3).getFace().ordinal() && cards.get(1).getFace().ordinal() !=cards.get(2).getFace().ordinal())
+        if(hand.get(0).getFace().ordinal() == hand.get(1).getFace().ordinal() && hand.get(2).getFace().ordinal() ==hand.get(3).getFace().ordinal() && hand.get(1).getFace().ordinal() !=hand.get(2).getFace().ordinal())
         {
             return true;
         }
@@ -239,8 +309,8 @@ public class PokerHand {
     }
 
     private boolean isPair() {
-        if(cards.get(0).getFace().ordinal() == cards.get(1).getFace().ordinal() || cards.get(0).getFace().ordinal() == cards.get(2).getFace().ordinal() ||
-                cards.get(0).getFace().ordinal() == cards.get(3).getFace().ordinal() || cards.get(0).getFace().ordinal() == cards.get(4).getFace().ordinal())
+        if(hand.get(0).getFace().ordinal() == hand.get(1).getFace().ordinal() || hand.get(0).getFace().ordinal() == hand.get(2).getFace().ordinal() ||
+                hand.get(0).getFace().ordinal() == hand.get(3).getFace().ordinal() || hand.get(0).getFace().ordinal() == hand.get(4).getFace().ordinal())
         {
             return true;
         }

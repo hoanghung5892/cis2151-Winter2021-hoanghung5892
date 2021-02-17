@@ -2,7 +2,6 @@
 package project_2;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class DeckOfCards {
@@ -18,21 +17,19 @@ public class DeckOfCards {
                deck.add(new Card(face,suit));
             }
         }
-    }
+    }        
 
-    @Override
-    public String toString() {
-        return "DeckOfCards{" + "deck=" + deck + '}';
-    }
-    
-
-    public Object getRandomCard()
+    public Card getRandomCard()
     {
         Random random = new Random();     
         int randomIndex = random.nextInt(deck.size());
-        String randomElement = deck.get(randomIndex).toString();
-        deck.remove(randomElement);
-        return randomElement;
+        Card randomCard = deck.get(randomIndex);
+        deck.remove(randomIndex);
+        return randomCard;
         
     }
 }
+
+    
+
+
