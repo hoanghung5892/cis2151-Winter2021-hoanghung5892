@@ -12,6 +12,7 @@ public class Project_2 {
 
         DeckOfCards deck = new DeckOfCards();
         //System.out.println(deck.getRandomCard());
+
         ArrayList computerCards = new ArrayList();
         ArrayList UserCards = new ArrayList();
         for (int i = 0; i < 10; i++)
@@ -27,8 +28,8 @@ public class Project_2 {
             
         }
 
-        System.out.println("Computer Cards are :"+computerCards);
-        System.out.println("User Cards are :"+UserCards);
+        System.out.println("Computer Cards are :"+computerCards.toString());
+        System.out.println("User Cards are :"+UserCards.toString());
 
         
 

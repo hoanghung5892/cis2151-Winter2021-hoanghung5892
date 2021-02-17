@@ -19,6 +19,11 @@ public class DeckOfCards {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "DeckOfCards{" + "deck=" + deck + '}';
+    }
     
 
     public Object getRandomCard()

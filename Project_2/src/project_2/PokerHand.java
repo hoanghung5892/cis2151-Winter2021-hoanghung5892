@@ -15,6 +15,7 @@ public class PokerHand {
             this.cards.add(new Card(card));
         }
         Collections.sort(this.cards);
+        System.out.println(cards);
     }
 
         public Object getRandomCard()
@@ -25,11 +26,6 @@ public class PokerHand {
         cards.remove(randomElement);
         return randomElement;
     }
-
-
-
-
-
 
     enum Rank {
         HIGH_CARD, PAIR, TWO_PAIR, THREE_OF_A_KIND,
@@ -52,8 +48,77 @@ public class PokerHand {
         {
             if(getHandRank() == Rank.STRAIGHT_FLUSH)
             {
-               return Result.DRAW;
-                
+                if(cards.get(4).getFace().ordinal() == otherHand.cards.get(4).getFace().ordinal())
+                {
+                    return Result.DRAW;
+                }
+                if(cards.get(4).getFace().ordinal() < otherHand.cards.get(4).getFace().ordinal())
+                {
+                    return Result.LOSE;
+                }
+                if(cards.get(4).getFace().ordinal() > otherHand.cards.get(4).getFace().ordinal())
+                {
+                    return Result.WIN;
+                }                             
+            }
+            if(getHandRank()== Rank.STRAIGHT)
+            {
+                if(cards.get(4).getFace().ordinal() == otherHand.cards.get(4).getFace().ordinal())
+                {
+                    return Result.DRAW;
+                }
+                if(cards.get(4).getFace().ordinal() < otherHand.cards.get(4).getFace().ordinal())
+                {
+                    return Result.LOSE;
+                }
+                if(cards.get(4).getFace().ordinal() > otherHand.cards.get(4).getFace().ordinal())
+                {
+                    return Result.WIN;
+                }    
+            }
+            if(getHandRank()== Rank.HIGH_CARD)
+            {
+                if(cards.get(4).getFace().ordinal() == otherHand.cards.get(4).getFace().ordinal() )
+                {
+                    if(cards.get(3).getFace().ordinal() == otherHand.cards.get(3).getFace().ordinal() )
+                    {
+                        if(cards.get(2).getFace().ordinal() == otherHand.cards.get(2).getFace().ordinal())
+                        {
+                            if(cards.get(1).getFace().ordinal() == otherHand.cards.get(1).getFace().ordinal())
+                            {
+                                if(cards.get(0).getFace().ordinal() == otherHand.cards.get(0).getFace().ordinal())
+                                {
+                                    return Result.DRAW;
+                                }
+                                if(cards.get(0).getFace().ordinal() > otherHand.cards.get(0).getFace().ordinal())
+                                {
+                                    return Result.WIN;
+                                }
+                                else return Result.LOSE;
+                            }
+                            if(cards.get(1).getFace().ordinal() > otherHand.cards.get(1).getFace().ordinal())
+                            {
+                                return Result.WIN;
+                            }
+                            else return Result.LOSE;
+                        }
+                        if(cards.get(2).getFace().ordinal() > otherHand.cards.get(2).getFace().ordinal())
+                        {
+                            return Result.WIN;
+                        }
+                        else return Result.LOSE;
+                    }
+                    if(cards.get(3).getFace().ordinal() > cards.get(3).getFace().ordinal() )
+                    {
+                        return Result.WIN;
+                    }
+                    else return Result.LOSE;
+                }
+                if((cards.get(4).getFace().ordinal()) > otherHand.cards.get(4).getFace().ordinal() )
+                {
+                    return Result.WIN;
+                }
+                else return Result.LOSE;
             }
         }
 
@@ -130,10 +195,11 @@ public class PokerHand {
     }
 
     private boolean isFullHouse() {
-        if(!isThreeOfAKind())
-        {
-            return true;
-        }
+         if (cards.get(0).getFace().ordinal() == cards.get(1).getFace().ordinal() && cards.get(0).getFace().ordinal() == cards.get(2).getFace().ordinal() && 
+                 cards.get(2).getFace().ordinal() != cards.get(3).getFace().ordinal()&&  cards.get(3).getFace().ordinal() == cards.get(4).getFace().ordinal() )      
+                 {
+                     return true;
+                 }
         return false;
     }
 
@@ -156,16 +222,28 @@ public class PokerHand {
 
     private boolean isThreeOfAKind() {
 
-                {
-                    
-                }
+         if (cards.get(0).getFace().ordinal() == cards.get(1).getFace().ordinal() && cards.get(0).getFace().ordinal() == cards.get(2).getFace().ordinal() && 
+                 cards.get(2).getFace().ordinal() != cards.get(3).getFace().ordinal()&&  cards.get(3).getFace().ordinal() != cards.get(4).getFace().ordinal() )      
+                 {
+                     return true;
+                 }
+                
         return false;
     }
     private boolean isTwoPair() {
+        if(cards.get(0).getFace().ordinal() == cards.get(1).getFace().ordinal() && cards.get(2).getFace().ordinal() ==cards.get(3).getFace().ordinal() && cards.get(1).getFace().ordinal() !=cards.get(2).getFace().ordinal())
+        {
+            return true;
+        }
         return false;
     }
 
     private boolean isPair() {
+        if(cards.get(0).getFace().ordinal() == cards.get(1).getFace().ordinal() || cards.get(0).getFace().ordinal() == cards.get(2).getFace().ordinal() ||
+                cards.get(0).getFace().ordinal() == cards.get(3).getFace().ordinal() || cards.get(0).getFace().ordinal() == cards.get(4).getFace().ordinal())
+        {
+            return true;
+        }
         return false;    
     }
     
