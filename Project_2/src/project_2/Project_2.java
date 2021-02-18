@@ -11,9 +11,10 @@ import java.util.Scanner;
 public class Project_2 {
     
     public static void main(String[] args) {       
-
+    double user_balance = 100.0;
+    double comp_balance = 100.0;  
+   do{   
         DeckOfCards deck = new DeckOfCards();
-
         ArrayList computerCards = new ArrayList();
         ArrayList UserCards = new ArrayList();
         for (int i = 0; i < 10; i++)
@@ -28,12 +29,13 @@ public class Project_2 {
             }
             
         }
+
+        System.out.println();
         System.out.print("User cards: ");
         PokerHand user = new PokerHand(UserCards);
         System.out.print("Computer cards: ");
         PokerHand comp = new PokerHand(computerCards);
-        double user_balance = 100.0;
-        double comp_balance = 100.0;
+
         double pot_win = 2.0;
         Random random = new Random();
         System.out.println("Press 1 if you want to raise and 2 for fold.");
@@ -51,7 +53,7 @@ public class Project_2 {
             }
             if(randomIndex ==1)
             {   
-                int randomMoneyBet = random.nextInt(30);
+                int randomMoneyBet = random.nextInt(50);
                 pot_win = pot_win + randomMoneyBet;
                 comp_balance = comp_balance - randomMoneyBet;
                 System.out.println("Computer decided to raise the amount $"+randomMoneyBet);
@@ -98,9 +100,20 @@ public class Project_2 {
         if(user_input == 2)
         {
             System.out.println("User decided to fold.");
-            System.out.println("Computer get the win_pot $"+pot_win+"\nComp Balance : $"+(comp_balance+pot_win));
+            System.out.println("Computer get the win_pot $"+pot_win+"\nComp Balance : $"+(comp_balance + pot_win));
             
-        }     
+        }  
+ } while (comp_balance > 1 && user_balance > 1);
+   if(comp_balance <1)
+   {
+       System.out.println("Computer run out of money");
+       
+   }
+      if(user_balance <1)
+   {
+       System.out.println("You run out of money");
+       
+   }
     }
 }
 
