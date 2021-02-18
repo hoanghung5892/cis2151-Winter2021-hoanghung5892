@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Card implements Comparable<Card>{
 
-    enum Suit { SPACES, CLUBS, HEARTS, DIAMONDS}
+    enum Suit { SPADES, CLUBS, HEARTS, DIAMONDS}
     enum Face { TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE }
     public Suit suit;
     public Face face;
