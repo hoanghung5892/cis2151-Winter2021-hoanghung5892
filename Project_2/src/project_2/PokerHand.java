@@ -165,13 +165,45 @@ public class PokerHand {
                     }
                       else return Result.LOSE;
                 }
+                
                 if(hand.get(3).getFace().ordinal() == hand.get(2).getFace().ordinal() && otherHand.hand.get(3).getFace().ordinal() == otherHand.hand.get(2).getFace().ordinal()
-                      && hand.get(3).getFace().ordinal() == otherHand.hand.get(2).getFace().ordinal()   )
+                      && hand.get(3).getFace().ordinal() > otherHand.hand.get(2).getFace().ordinal()   )
                 {
                     return Result.WIN;
                 }
                 if(hand.get(3).getFace().ordinal() == hand.get(2).getFace().ordinal() && otherHand.hand.get(3).getFace().ordinal() == otherHand.hand.get(2).getFace().ordinal()
                       && hand.get(3).getFace().ordinal() < otherHand.hand.get(2).getFace().ordinal()   )
+                {
+                    return Result.LOSE;
+                }
+                if(hand.get(3).getFace().ordinal() == hand.get(2).getFace().ordinal() && otherHand.hand.get(4).getFace().ordinal() == otherHand.hand.get(3).getFace().ordinal()
+                        && hand.get(3).getFace().ordinal() == otherHand.hand.get(4).getFace().ordinal())
+                {
+                       if(hand.get(1).getFace().ordinal() == hand.get(0).getFace().ordinal() && otherHand.hand.get(2).getFace().ordinal() == otherHand.hand.get(1).getFace().ordinal()
+                            && hand.get(3).getFace().ordinal() == otherHand.hand.get(4).getFace().ordinal())
+                       {
+                           return Result.WIN;
+                           // the cards always get sorted before the compare. Therefore, hand.get(4).getFace().ordinal()
+                           // alway larger than otherHand.hand.getFace().ordinal() . 
+                       }
+                        if(hand.get(1).getFace().ordinal() == hand.get(0).getFace().ordinal() && otherHand.hand.get(2).getFace().ordinal() == otherHand.hand.get(1).getFace().ordinal()
+                            && hand.get(3).getFace().ordinal() > otherHand.hand.get(4).getFace().ordinal())
+                       {
+                           return Result.WIN;
+                       }
+                        if(hand.get(1).getFace().ordinal() == hand.get(0).getFace().ordinal() && otherHand.hand.get(2).getFace().ordinal() == otherHand.hand.get(1).getFace().ordinal()
+                            && hand.get(3).getFace().ordinal() < otherHand.hand.get(4).getFace().ordinal())
+                       {
+                           return Result.LOSE;
+                       }
+                }
+                if(hand.get(3).getFace().ordinal() == hand.get(2).getFace().ordinal() && otherHand.hand.get(4).getFace().ordinal() == otherHand.hand.get(3).getFace().ordinal()
+                        && hand.get(3).getFace().ordinal() > otherHand.hand.get(4).getFace().ordinal())
+                {
+                    return Result.WIN;
+                }
+                if(hand.get(3).getFace().ordinal() == hand.get(2).getFace().ordinal() && otherHand.hand.get(4).getFace().ordinal() == otherHand.hand.get(3).getFace().ordinal()
+                        && hand.get(3).getFace().ordinal() == otherHand.hand.get(4).getFace().ordinal())
                 {
                     return Result.LOSE;
                 }
