@@ -66,16 +66,17 @@ public class Project_2 {
                     pot_win = pot_win + randomMoneyBet;
                     user_balance = user_balance - randomMoneyBet;
                     if(user.call(comp) == PokerHand.Result.WIN)
-                    {
-                        user_balance = user_balance + pot_win;
+                    {                        
                         System.out.println("User "+user.call(comp)+" Win_pot is  $"+pot_win);
+                        user_balance = user_balance + pot_win;
                         System.out.println("User Balance: $"+user_balance);
                         System.out.println("Comp Balance: $"+comp_balance);
                     }
                     if(user.call(comp) == PokerHand.Result.LOSE)
                     {             
-                        comp_balance = comp_balance + pot_win;
+                        
                         System.out.println("User "+user.call(comp)+" Win_pot is  $"+pot_win);
+                        comp_balance = comp_balance + pot_win;
                         System.out.println("User Balance: $"+user_balance);
                         System.out.println("Comp Balance: $"+comp_balance);
                     }
@@ -84,14 +85,14 @@ public class Project_2 {
                         user_balance = user_balance +pot_win/2;
                         comp_balance = comp_balance + pot_win/2;
                         System.out.println("User "+user.call(comp)+" Win_pot is $"+pot_win);
-                        System.out.println("User Balance: $"+user_balance);
+                        System.out.println("User Balance: $"+(user_balance));
                         System.out.println("Comp Balance: $"+comp_balance);
                     }
                 }
                 if (user_input_second == 2)
                 {
                     System.out.println("User decided to fold");
-                    System.out.println("Computer get the win_pot $"+pot_win+" Comp Balance : $"+comp_balance +pot_win);
+                    System.out.println("Computer get the win_pot $"+pot_win+" Comp Balance : $"+(comp_balance+pot_win));
                 }
         }
                              

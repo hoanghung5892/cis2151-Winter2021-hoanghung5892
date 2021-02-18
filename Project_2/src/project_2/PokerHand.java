@@ -104,7 +104,7 @@ public class PokerHand {
                         }
                         else return Result.LOSE;
                     }
-                    if(hand.get(3).getFace().ordinal() > hand.get(3).getFace().ordinal() )
+                    if(hand.get(3).getFace().ordinal() > otherHand.hand.get(3).getFace().ordinal() )
                     {
                         return Result.WIN;
                     }
@@ -288,9 +288,54 @@ public class PokerHand {
                 {
                     return Result.LOSE;
                 }
+                if(hand.get(2).getFace().ordinal() == hand.get(1).getFace().ordinal() && otherHand.hand.get(2).getFace().ordinal() == otherHand.hand.get(1).getFace().ordinal()
+                        && hand.get(2).getFace().ordinal() > otherHand.hand.get(2).getFace().ordinal())
+                {
+                    return Result.WIN;
+                }
+                if(hand.get(2).getFace().ordinal() == hand.get(1).getFace().ordinal() && otherHand.hand.get(2).getFace().ordinal() == otherHand.hand.get(1).getFace().ordinal()
+                        && hand.get(2).getFace().ordinal() < otherHand.hand.get(2).getFace().ordinal())
+                {
+                    return Result.LOSE;
+                }
+                if(hand.get(2).getFace().ordinal() == hand.get(1).getFace().ordinal() && otherHand.hand.get(2).getFace().ordinal() == otherHand.hand.get(1).getFace().ordinal()
+                        && hand.get(2).getFace().ordinal() == otherHand.hand.get(2).getFace().ordinal())
+                {
+                    if(hand.get(4).getFace().ordinal() == otherHand.hand.get(4).getFace().ordinal())
+                    {
+                        if(hand.get(3).getFace().ordinal() == otherHand.hand.get(3).getFace().ordinal())
+                        {
+                            if(hand.get(0).getFace().ordinal() == otherHand.hand.get(0).getFace().ordinal())
+                            {
+                                return Result.DRAW;
+                            }
+                            if(hand.get(0).getFace().ordinal() > otherHand.hand.get(0).getFace().ordinal())
+                            {
+                                return Result.WIN;
+                            }
+                            else return Result.LOSE;
+                        }
+                        if(hand.get(3).getFace().ordinal() >  otherHand.hand.get(3).getFace().ordinal())
+                        {
+                            return Result.WIN;
+                        }
+                        if(hand.get(3).getFace().ordinal() == otherHand.hand.get(3).getFace().ordinal())
+                        {
+                            return Result.LOSE;
+                        }
+                    }
+                    if(hand.get(4).getFace().ordinal() > otherHand.hand.get(4).getFace().ordinal())
+                    {
+                        return Result.WIN;
+                    }
+                     if(hand.get(4).getFace().ordinal() == otherHand.hand.get(4).getFace().ordinal())
+                    {
+                        return Result.LOSE;
+                    }
+                }
             }
         }
-        return Result.DRAW;
+        return Result.LOSE;
     }
 
     public Rank getHandRank() {
