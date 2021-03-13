@@ -17,6 +17,10 @@ public class Light_Carts extends Base_Cart {
     }
 
     
+    @Override
+    public void use_item() {
+        
+    }
 
 
 }

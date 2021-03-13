@@ -45,7 +45,23 @@ public abstract class Base_Cart {
         currentSpeed = currentSpeed - breakSpeed;
         return currentSpeed;
     }
+    public String addItem(String item)
+    {
+        if("MUSHROOM".equals(item))
+        {
+            this.Item = item;
+        }
+        if("BANANA".equals(item))
+        {
+            this.Item = item;  
+        }
+        if("SHELL".equals(item))
+        {
+            this.Item = item;
+        }
+        return Item;
+    }
      public abstract void use_item();
     
-    
+
 }
