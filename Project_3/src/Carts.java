@@ -1,4 +1,8 @@
 
+import java.util.ArrayList;
+import java.util.Random;
+
+
 public abstract class Carts {
     protected int maxSpeed;
     protected int acceleration;
@@ -33,6 +37,35 @@ public abstract class Carts {
     }
 
     public String getItem() {
+        Light_Carts lightCart = new Light_Carts(298,52,100,32,"");
+        Heavy_Carts heavyCart = new Heavy_Carts(302,48,100,28,"");
+        Motorcycles motorcycles = new Motorcycles(303,53,100,33,"");
+        ArrayList<Carts> carts = new ArrayList<>();
+        carts.add(lightCart);
+        carts.add(heavyCart);
+        carts.add(motorcycles);
+        Track track = new Track(carts, 200);
+        if(track.currentPosition > 1200)
+        {   
+            System.out.println("You passed 1200 miles. You can get a random item! ");
+            Random rd = new Random();
+            int a = rd.nextInt(2);
+            if(a == 0)
+            {
+                Item = "MUSHROOM";
+                System.out.println("You got a mushroom!");
+            }
+            if(a == 1)
+            {
+                Item = "SHELL";
+                System.out.println("You got a shell!");
+            }
+            if(a == 2)
+            {
+                Item = "BANANA";
+                System.out.println("You got a banana!");
+            }                
+        }else System.out.println("You need to pass 1200 miles in order to get an item.");
         return Item;
     }
 

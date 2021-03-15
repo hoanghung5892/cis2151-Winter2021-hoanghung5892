@@ -30,6 +30,7 @@ public class Light_Carts extends Carts {
 
     @Override
     public void brake() {
+       
        currentSpeed = currentSpeed - breakSpeed;
     }
 

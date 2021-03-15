@@ -16,9 +16,6 @@ public Track(ArrayList<Carts> Carts, int currentPosition )
 {
     this.Carts = Carts;
     this.currentPosition = currentPosition;
-    bends.add(new Bends(500,100));
-    bends.add(new Bends(1000,120));
-    bends.add(new Bends(1500,200));
 
 }
 
@@ -77,10 +74,9 @@ public Track(ArrayList<Carts> Carts, int currentPosition )
         carts.add(lightCart);
         carts.add(heavyCart);
         carts.add(motorcycles);
-        Track track = new Track(carts,200);
         Bends first_bend = bends.get(0);
-        Bends second_bend = bends.get(0);
-        Bends third_bend = bends.get(0);
+        Bends second_bend = bends.get(1);
+        Bends third_bend = bends.get(2);
         if(currentPosition < 500)
         {
             if ( lightCart.getCurrentSpeed() > first_bend.getMax_speed_bend())
@@ -109,9 +105,6 @@ public Track(ArrayList<Carts> Carts, int currentPosition )
                    System.out.println("Your speed larger than the bend speed. You went off the road");
                     currentPosition = 0;
             }
-            
-
-
         }
         if (currentPosition < 1000)
         {
