@@ -19,12 +19,6 @@ public class Racing_carts implements Items {
 
     @Override
     public void use(Carts carts, Track track) {
-        carts = new Light_Carts(300,50,100,30,"");
-        Carts cart_1 = new Heavy_Carts(300,50,100,30,"");
-        ArrayList<Carts> carts_list = new ArrayList<>();
-        carts_list.add(carts);
-        carts_list.add(cart_1);
-        track = new Track(carts_list, 200);
         if(carts.Item.isEmpty())
         {
             System.out.println("Your cart doesnt have any item.");
@@ -37,22 +31,24 @@ public class Racing_carts implements Items {
             System.out.println("Currently max speed of the carts: "+carts.getMaxSpeed());
             System.out.println("Current posstion: "+track.currentPosition);
             System.out.println("Total distance: "+track.getTotal_distance());
-            carts.Item =null;
+            carts.setItem(null);
         }
         if("BANANA".equals(carts.Item))
-        {                   
+        {   
+            carts.use_item();
             System.out.println("You dropped a banana at "+track.currentPosition);
-            carts.Item = null;
+            carts.setItem(null);
         }
         if("SHELL".equals(carts.Item))
         {     
-            SHELL shot = new SHELL(cart_1);
-            shot.Shot();
-            carts.Item = null;
-        }
+           // SHELL shot = new SHELL();
+            //shot.Shot();
+            carts.setItem(null);
         }
         }
 
-    enum Item{MUSHROOM, SHELL, BANANA}
+    
     }
+    enum Item{MUSHROOM, SHELL, BANANA}
+}
     
