@@ -20,6 +20,26 @@ public abstract class Carts {
         
     }
 
+    public void setMaxSpeed(int maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    public void setAcceleration(int acceleration) {
+        this.acceleration = acceleration;
+    }
+
+    public void setCurrentSpeed(int currentSpeed) {
+        this.currentSpeed = currentSpeed;
+    }
+
+    public void setBreakSpeed(int breakSpeed) {
+        this.breakSpeed = breakSpeed;
+    }
+
+    public void setItem(String Item) {
+        this.Item = Item;
+    }
+
     public int getMaxSpeed() {
         return maxSpeed;
     }
