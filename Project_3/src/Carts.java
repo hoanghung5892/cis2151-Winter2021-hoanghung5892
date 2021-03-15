@@ -1,12 +1,12 @@
 
-public abstract class Base_Cart {
-    protected int maxSpeed = 300;
-    protected int acceleration = 50;
-    protected int currentSpeed = 100;
-    protected int breakSpeed = 30;
+public abstract class Carts {
+    protected int maxSpeed;
+    protected int acceleration;
+    protected int currentSpeed ;
+    protected int breakSpeed ;
     protected String Item;
     
-    public Base_Cart(int maxSpeed, int acceleration, int currentSpeed, int breakSpeed, String Item)
+    public Carts(int maxSpeed, int acceleration, int currentSpeed, int breakSpeed, String Item)
     {
         this.maxSpeed = maxSpeed;
         this.acceleration = acceleration;
@@ -35,16 +35,8 @@ public abstract class Base_Cart {
     public String getItem() {
         return Item;
     }
-    public int accelerate(int acceleration)
-    {
-        currentSpeed = currentSpeed + acceleration;
-        return currentSpeed;
-    }
-    public int brake(int breakSpeed)
-    {
-        currentSpeed = currentSpeed - breakSpeed;
-        return currentSpeed;
-    }
+
+
     public String addItem(String item)
     {
         if("MUSHROOM".equals(item))
@@ -61,7 +53,11 @@ public abstract class Base_Cart {
         }
         return Item;
     }
-     public abstract void use_item();
+    public abstract void use_item();
+    
+    public abstract void accelerate();
+
+    public abstract void brake();
     
 
 }

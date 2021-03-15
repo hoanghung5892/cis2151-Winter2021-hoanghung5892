@@ -17,15 +17,18 @@ public class Racing_carts implements Items {
         Light_Carts lightCart = new Light_Carts(298,52,100,32,"");
         Heavy_Carts heavyCart = new Heavy_Carts(302,48,100,28,"");
         Motorcycles motorcycles = new Motorcycles(303,53,100,33,"");
-        ArrayList<Base_Cart> Carts = new ArrayList<>();
-        Carts.add(0, lightCart);
-        Carts.add(1, heavyCart);
-        Carts.add(2, motorcycles);
+        ArrayList<Carts> carts = new ArrayList<>();
+        carts.add(lightCart);
+        carts.add(heavyCart);
+        carts.add(motorcycles);
+        System.out.println(carts.toArray());
     }
 
     @Override
-    public void use(Base_Cart carts, Track track) {
+    public void use(Carts carts, Track track) {
         
     }
+
+
     enum Item{MUSHROOM, SHELL, BANANA}
 }

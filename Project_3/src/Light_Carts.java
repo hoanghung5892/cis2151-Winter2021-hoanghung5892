@@ -8,7 +8,7 @@
  *
  * @author Hoang Hung
  */
-public class Light_Carts extends Base_Cart {
+public class Light_Carts extends Carts {
     
 
     
@@ -20,6 +20,17 @@ public class Light_Carts extends Base_Cart {
     @Override
     public void use_item() {
         
+    }
+
+    @Override
+    public void accelerate() {
+        currentSpeed = currentSpeed + acceleration;
+        //System.out.println(currentSpeed);
+    }
+
+    @Override
+    public void brake() {
+       currentSpeed = currentSpeed - breakSpeed;
     }
 
 
