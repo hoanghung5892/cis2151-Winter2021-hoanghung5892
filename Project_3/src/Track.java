@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class Track {
@@ -18,9 +19,13 @@ public Track(ArrayList<Carts> Carts, int currentPosition )
     bends.add(new Bends(500,100));
     bends.add(new Bends(1000,120));
     bends.add(new Bends(1500,200));
+
 }
 
     public int getNextBend() {
+        bends.add(new Bends(500,100));
+        bends.add(new Bends(1000,120));
+        bends.add(new Bends(1500,200));
         if(currentPosition < 500)
             {
                 Bends first_bend = bends.get(0);
@@ -44,6 +49,9 @@ public Track(ArrayList<Carts> Carts, int currentPosition )
     }
 
     public int getBendMaxSpeed() {
+        bends.add(new Bends(500,100));
+        bends.add(new Bends(1000,120));
+        bends.add(new Bends(1500,200));
         if(currentPosition < 500)
         {
            Bends first_bend = bends.get(0);
@@ -60,6 +68,112 @@ public Track(ArrayList<Carts> Carts, int currentPosition )
            max_speed_bend = third_bend.getMax_speed_bend();
         }       
         return max_speed_bend;
+    }
+    public void checkMaxSpeed(){
+        Light_Carts lightCart = new Light_Carts(298,52,100,32,"");
+        Heavy_Carts heavyCart = new Heavy_Carts(302,48,100,28,"");
+        Motorcycles motorcycles = new Motorcycles(303,53,100,33,"");
+        ArrayList<Carts> carts = new ArrayList<>();
+        carts.add(lightCart);
+        carts.add(heavyCart);
+        carts.add(motorcycles);
+        Track track = new Track(carts,200);
+        Bends first_bend = bends.get(0);
+        Bends second_bend = bends.get(0);
+        Bends third_bend = bends.get(0);
+        if(currentPosition < 500)
+        {
+            if ( lightCart.getCurrentSpeed() > first_bend.getMax_speed_bend())
+            {
+                Random rd = new Random();
+                int a = rd.nextInt(1);
+                if(a == 1)
+                {
+                    System.out.println("Your speed larger than the bend speed. You went off the road");
+                    currentPosition = 0;
+                    System.out.println("Your current posstion :"+currentPosition);         
+                }
+                if(a == 0 )
+                {
+                    System.out.println("You are successfull pass the bends without penalty!!!");
+                    System.out.println("Your current posstion :"+currentPosition);
+                }
+            }
+            if ( heavyCart.getCurrentSpeed() > first_bend.getMax_speed_bend())
+            {
+                   System.out.println("Your speed larger than the bend speed. You went off the road");
+                    currentPosition = 0;
+            }
+            if ( motorcycles.getCurrentSpeed() > first_bend.getMax_speed_bend())
+            {
+                   System.out.println("Your speed larger than the bend speed. You went off the road");
+                    currentPosition = 0;
+            }
+            
+
+
+        }
+        if (currentPosition < 1000)
+        {
+            if ( lightCart.getCurrentSpeed() > second_bend.getMax_speed_bend())
+            {
+                Random rd = new Random();
+                int a = rd.nextInt(1);
+                if(a == 1)
+                {
+                    System.out.println("Your speed larger than the bend speed. You went off the road");
+                    currentPosition = 0;
+                    System.out.println("Your current posstion :"+currentPosition);         
+                }
+                if(a == 0 )
+                {
+                    System.out.println("You are successfull pass the bends without penalty!!!");
+                    System.out.println("Your current posstion :"+currentPosition);
+                }
+            }
+            if ( heavyCart.getCurrentSpeed() > second_bend.getMax_speed_bend())
+            {
+                   System.out.println("Your speed larger than the bend speed. You went off the road");
+                    currentPosition = 0;
+            }
+            if ( motorcycles.getCurrentSpeed() > second_bend.getMax_speed_bend())
+            {
+                   System.out.println("Your speed larger than the bend speed. You went off the road");
+                    currentPosition = 0;
+            }
+            
+        }
+        if (currentPosition > 1500 )
+        {
+            if ( lightCart.getCurrentSpeed() > third_bend.getMax_speed_bend())
+            {
+                Random rd = new Random();
+                int a = rd.nextInt(1);
+                if(a == 1)
+                {
+                    System.out.println("Your speed larger than the bend speed. You went off the road");
+                    currentPosition = 0;
+                    System.out.println("Your current posstion :"+currentPosition);         
+                }
+                if(a == 0 )
+                {
+                    System.out.println("You are successfull pass the bends without penalty!!!");
+                    System.out.println("Your current posstion :"+currentPosition);
+                }
+ 
+            }
+            if ( heavyCart.getCurrentSpeed() > third_bend.getMax_speed_bend())
+            {
+                   System.out.println("Your speed larger than the bend speed. You went off the road");
+                    currentPosition = 0;
+            }
+            if ( motorcycles.getCurrentSpeed() > third_bend.getMax_speed_bend())
+            {
+                   System.out.println("Your speed larger than the bend speed. You went off the road");
+                    currentPosition = 0;
+            }
+        }
+        
     }
 
     enum Item{MUSHROOM, SHELL, BANANA}
