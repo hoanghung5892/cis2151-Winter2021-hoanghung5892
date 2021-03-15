@@ -5,8 +5,15 @@ import java.util.ArrayList;
 public class Racing_carts implements Items {
     public static void main (String[]args)
     {
+        Carts lightcart = new Light_Carts(300,50,100,30,"");
+        Carts heavycart = new Heavy_Carts(300,50,100,30,"");
+        Carts motorcyles = new Motorcycles(300,50,100,30,"");
+        ArrayList<Carts> carts_list = new ArrayList<>();
+        carts_list.add(lightcart);
+        carts_list.add(heavycart);
+        carts_list.add(motorcyles);
+        Track track = new Track(carts_list,200);
 
-        
 
     }
 
