@@ -13,12 +13,14 @@ public class Racing_carts implements Items {
         carts_list.add(heavycart);
         carts_list.add(motorcyles);
         Track track = new Track(carts_list,200);
+        System.out.println(track.getTotal_distance());
+        use(lightcart,track);
 
 
     }
 
     @Override
-    public void use(Carts carts, Track track) {
+    public  void use(Carts carts, Track track) {
         if(carts.Item.isEmpty())
         {
             System.out.println("Your cart doesnt have any item.");
@@ -27,6 +29,7 @@ public class Racing_carts implements Items {
         {
            if("MUSHROOM".equals(carts.Item))
         {
+            carts.use_item();
             carts.maxSpeed = carts.maxSpeed + 100;
             System.out.println("Currently max speed of the carts: "+carts.getMaxSpeed());
             System.out.println("Current posstion: "+track.currentPosition);
@@ -41,8 +44,11 @@ public class Racing_carts implements Items {
         }
         if("SHELL".equals(carts.Item))
         {     
-           // SHELL shot = new SHELL();
-            //shot.Shot();
+            Carts cart1 = new Light_Carts(300,50,100,30,"");
+            Carts cart2 = new Heavy_Carts(300,50,100,30,"");
+            carts.use_item();
+            SHELL shot = new SHELL(cart1,cart2);
+            shot.Shot();
             carts.setItem(null);
         }
         }

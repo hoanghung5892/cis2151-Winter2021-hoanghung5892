@@ -9,15 +9,17 @@
  * @author Hoang Hung
  */
 public class SHELL {
-    public Carts carts;
-    public SHELL(Carts carts)
+    public Carts cart_1;
+    public Carts cart_2;
+    public SHELL(Carts cart_1, Carts cart_2)
     {
-        this.carts = carts;
+        this.cart_1 = cart_1;
+        this.cart_2 = cart_2;
     }
     public void Shot()
     {
-        carts.setCurrentSpeed(0);
+        cart_2.setCurrentSpeed(0);
         System.out.println("You got shot by other cart");
-        System.out.println("Your current speed: "+carts.getCurrentSpeed());
+        System.out.println("Your current speed: "+cart_2.getCurrentSpeed());
     }
 }
