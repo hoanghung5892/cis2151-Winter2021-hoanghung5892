@@ -46,10 +46,10 @@ public class Racing_carts implements Items {
         {     
             Carts cart1 = new Light_Carts(300,50,100,30,"");
             Carts cart2 = new Heavy_Carts(300,50,100,30,"");
-            carts.use_item();
+            cart1.use_item();
             SHELL shot = new SHELL(cart1,cart2);
             shot.Shot();
-            carts.setItem(null);
+            cart1.setItem(null);
         }
         }
 
