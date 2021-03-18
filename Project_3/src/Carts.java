@@ -101,7 +101,7 @@ public abstract class Carts {
     public abstract void accelerate();
 
     public abstract void brake();
-    public abstract void entertheBend();
+    public abstract void entertheBend(Bends bend);
     
 
 }

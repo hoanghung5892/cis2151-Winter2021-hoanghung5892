@@ -24,8 +24,13 @@ public class Motorcycles extends Carts {
     }
 
     @Override
-    public void entertheBend() {
-        
+    public void entertheBend(Bends bend) {
+    if(carts.getCurrentSpeed() > bend.getMax_speed_bend())
+        {
+                System.out.println("Your speed larger than the maximum bend's speed . You went off the road");
+                bend.bendposition = 0;
+                System.out.println("Your current posstion :"+bend.bendposition);  
+        }
     }
     
 }

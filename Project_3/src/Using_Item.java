@@ -12,7 +12,7 @@ public class Using_Item implements Items{
            if("MUSHROOM".equals(carts.Item))
         {
             carts.use_item();
-            carts.maxSpeed = carts.maxSpeed + 100;
+            carts.currentSpeed = carts.maxSpeed + 100;
             System.out.println("Currently max speed of the carts: "+carts.getMaxSpeed());
             System.out.println("Current posstion: "+track.currentPosition);
             System.out.println("Total distance: "+track.getTotal_distance());
