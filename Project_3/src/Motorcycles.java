@@ -2,8 +2,8 @@
 public class Motorcycles extends Carts {
 
     protected Carts carts;
-    public Motorcycles(int maxSpeed, int acceleration, int currentSpeed, int breakSpeed, String Item) {
-        super(maxSpeed+3, acceleration+3, currentSpeed, breakSpeed+3, Item);
+    public Motorcycles(int maxSpeed, int acceleration, int currentSpeed, int breakSpeed) {
+        super(maxSpeed+3, acceleration+3, currentSpeed, breakSpeed+3);
     }
 
     @Override
@@ -21,6 +21,11 @@ public class Motorcycles extends Carts {
     public void brake() {
         currentSpeed = currentSpeed - breakSpeed;
         System.out.println(currentSpeed);
+    }
+
+    @Override
+    public void entertheBend() {
+        
     }
     
 }

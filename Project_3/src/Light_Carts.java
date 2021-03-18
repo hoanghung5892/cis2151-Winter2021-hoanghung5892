@@ -3,8 +3,8 @@ public class Light_Carts extends Carts {
     
     protected Carts carts;
 
-    public Light_Carts(int maxSpeed, int acceleration, int currentSpeed, int breakSpeed, String Item) {
-        super(maxSpeed-2, acceleration+2, currentSpeed, breakSpeed+2, Item);
+    public Light_Carts(int maxSpeed, int acceleration, int currentSpeed, int breakSpeed ) {
+        super(maxSpeed-2, acceleration+2, currentSpeed, breakSpeed+2 );
     }
 
     
@@ -23,6 +23,11 @@ public class Light_Carts extends Carts {
     public void brake() { 
        currentSpeed = currentSpeed - breakSpeed;
        System.out.println(currentSpeed);
+    }
+
+    @Override
+    public void entertheBend() {
+
     }
 
 

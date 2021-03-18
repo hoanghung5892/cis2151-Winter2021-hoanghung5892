@@ -10,7 +10,6 @@ public class Track {
     public int distance_next_bend;
     public ArrayList<Bends> bends;
     public int currentPosition;
-    public int bendposition;
     public int max_speed_bend;
 public Track(ArrayList<Carts> Carts, int currentPosition )
 {
@@ -26,7 +25,7 @@ public Track(ArrayList<Carts> Carts, int currentPosition )
         if(currentPosition < 500)
             {
                 Bends first_bend = bends.get(0);
-                distance_next_bend = first_bend.bendposition - currentPosition ;
+                distance_next_bend = first_bend.bendposition - currentPosition ;           
             }
         if(currentPosition < 1000)
             {
@@ -38,7 +37,7 @@ public Track(ArrayList<Carts> Carts, int currentPosition )
                 Bends third_bend = bends.get(0);
                 distance_next_bend = third_bend.bendposition - currentPosition ;
             }   
-        return max_speed_bend;
+     return distance_next_bend;   
     }
 
     public int getTotal_distance() {
@@ -67,9 +66,9 @@ public Track(ArrayList<Carts> Carts, int currentPosition )
         return max_speed_bend;
     }
     public void checkMaxSpeed(){
-        Light_Carts lightCart = new Light_Carts(298,52,100,32,"");
-        Heavy_Carts heavyCart = new Heavy_Carts(302,48,100,28,"");
-        Motorcycles motorcycles = new Motorcycles(303,53,100,33,"");
+        Light_Carts lightCart = new Light_Carts(298,52,100,32);
+        Heavy_Carts heavyCart = new Heavy_Carts(302,48,100,28);
+        Motorcycles motorcycles = new Motorcycles(303,53,100,33);
         ArrayList<Carts> carts = new ArrayList<>();
         carts.add(lightCart);
         carts.add(heavyCart);
@@ -77,6 +76,9 @@ public Track(ArrayList<Carts> Carts, int currentPosition )
         Bends first_bend = bends.get(0);
         Bends second_bend = bends.get(1);
         Bends third_bend = bends.get(2);
+        bends.add(new Bends(500,100));
+        bends.add(new Bends(1000,120));
+        bends.add(new Bends(1500,200));
         if(currentPosition < 500)
         {
             if ( lightCart.getCurrentSpeed() > first_bend.getMax_speed_bend())

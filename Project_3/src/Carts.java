@@ -10,14 +10,12 @@ public abstract class Carts {
     protected int breakSpeed ;
     protected String Item;
     
-    public Carts(int maxSpeed, int acceleration, int currentSpeed, int breakSpeed, String Item)
+    public Carts(int maxSpeed, int acceleration, int currentSpeed, int breakSpeed)
     {
         this.maxSpeed = maxSpeed;
         this.acceleration = acceleration;
         this.currentSpeed = currentSpeed;
-        this.breakSpeed = breakSpeed;
-        this.Item = Item;
-        
+        this.breakSpeed = breakSpeed;             
     }
 
     public void setMaxSpeed(int maxSpeed) {
@@ -56,15 +54,7 @@ public abstract class Carts {
         return breakSpeed;
     }
 
-    public String getItem() {
-        Light_Carts lightCart = new Light_Carts(298,52,100,32,"");
-        Heavy_Carts heavyCart = new Heavy_Carts(302,48,100,28,"");
-        Motorcycles motorcycles = new Motorcycles(303,53,100,33,"");
-        ArrayList<Carts> carts = new ArrayList<>();
-        carts.add(lightCart);
-        carts.add(heavyCart);
-        carts.add(motorcycles);
-        Track track = new Track(carts, 200);
+    public String getItem(Carts cart, Track track) {       
         if(track.currentPosition > 1200)
         {   
             System.out.println("You passed 1200 miles. You can get a random item! ");
@@ -72,17 +62,17 @@ public abstract class Carts {
             int a = rd.nextInt(2);
             if(a == 0)
             {
-                Item = "MUSHROOM";
+                cart.Item = "MUSHROOM";
                 System.out.println("You got a mushroom!");
             }
             if(a == 1)
             {
-                Item = "SHELL";
+                cart.Item = "SHELL";
                 System.out.println("You got a shell!");
             }
             if(a == 2)
             {
-                Item = "BANANA";
+                cart.Item = "BANANA";
                 System.out.println("You got a banana!");
             }                
         }else System.out.println("You need to pass 1200 miles in order to get an item.");
@@ -111,6 +101,7 @@ public abstract class Carts {
     public abstract void accelerate();
 
     public abstract void brake();
+    public abstract void entertheBend();
     
 
 }

@@ -19,7 +19,7 @@ public class SHELL {
     public void Shot()
     {
         cart_2.setCurrentSpeed(0);
-        System.out.println("You got shot by other cart");
-        System.out.println("Your current speed: "+cart_2.getCurrentSpeed());
+        System.out.println("You shot other cart");
+        System.out.println("Their current speed: "+cart_2.getCurrentSpeed());
     }
 }
